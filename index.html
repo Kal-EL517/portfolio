@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Harshil Darji - Portfolio</title>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" onerror="console.warn('GSAP failed to load')"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" onerror="console.warn('ScrollTrigger failed to load')"></script>
@@ -19,27 +19,26 @@
       line-height: 1.6;
     }
     section {
-      padding: 4rem 1rem;
+      padding: min(5rem, 8vw) min(1rem, 4vw);
       text-align: center;
     }
     h1, h2, h3 {
       margin-bottom: 1.5rem;
     }
     h1 {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-size: clamp(2rem, 5vw, 3.5rem);
     }
     h2 {
-      font-size: clamp(2rem, 4vw, 2.5rem);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
     }
     h3 {
-      font-size: clamp(1.5rem, 3vw, 1.8rem);
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
     }
     p {
-      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
       max-width: 800px;
       margin: 0 auto;
     }
-
     .hero {
       min-height: 100vh;
       display: flex;
@@ -49,34 +48,39 @@
       position: relative;
       overflow: hidden;
       flex-direction: row;
-      gap: 2rem;
+      gap: min(2rem, 5vw);
+      padding: 1rem;
     }
     .hero-content {
       z-index: 1;
+      flex: 1;
     }
     .cool-guy {
-      max-height: 300px;
+      max-width: min(40vw, 300px);
+      max-height: min(40vh, 300px);
+      object-fit: contain;
       transform: translateX(100%);
       opacity: 0;
       z-index: 1;
+      flex: 0 0 auto;
     }
-
     .about, .projects, .contact {
       background-color: #262626;
     }
     .skills-container, .expertise-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: min(1.5rem, 4vw);
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1rem;
+      padding: 0 min(1rem, 4vw);
     }
     .skill-card, .expertise-card, .project-card {
       background-color: #333;
-      padding: 1.5rem;
+      padding: min(1.5rem, 5vw);
       border-radius: 12px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      will-change: transform, box-shadow;
     }
     .skill-card:hover, .expertise-card:hover {
       transform: translateY(-5px);
@@ -88,65 +92,100 @@
     }
     .contact a {
       display: inline-block;
-      padding: 0.75rem 1.5rem;
+      padding: min(0.75rem, 2vw) min(1.5rem, 4vw);
       background-color: #2563eb;
       color: #fff;
       text-decoration: none;
       border-radius: 8px;
-      font-size: 1.1rem;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
       transition: background-color 0.3s ease;
+      touch-action: manipulation;
     }
     .contact a:hover {
       background-color: #1d4ed8;
     }
-
-    @media (max-width: 768px) {
-      section {
-        padding: 2rem 1rem;
+    /* Responsive Design */
+    @media (max-width: 320px) {
+      .hero {
+        gap: 1rem;
+        padding: 0.5rem;
+      }
+      .cool-guy {
+        max-width: 100px;
+        max-height: 100px;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .cool-guy {
+        max-width: 150px;
+        max-height: 150px;
       }
       .skills-container, .expertise-container {
         grid-template-columns: 1fr;
       }
       .skill-card, .expertise-card {
-        margin: 0 auto;
         max-width: 400px;
-      }
-      .hero {
-        flex-direction: column;
-      }
-      .cool-guy {
-        max-height: 200px;
+        margin: 0 auto;
       }
     }
-    @media (max-width: 480px) {
-      h1 { font-size: 2rem; }
-      h2 { font-size: 1.8rem; }
-      h3 { font-size: 1.4rem; }
-      p { font-size: 0.9rem; }
-      .contact a {
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
+    @media (max-width: 768px) and (min-width: 601px) {
+      .hero {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .cool-guy {
+        max-width: 200px;
+        max-height: 200px;
+      }
+      .expertise-container {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
     @media (min-width: 1024px) {
-      section {
-        padding: 5rem 2rem;
+      .hero {
+        flex-direction: row;
       }
-      .skills-container, .expertise-container {
+      .skills-container {
         grid-template-columns: repeat(3, 1fr);
+      }
+      .expertise-container {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    @media (min-width: 1200px) {
+      section {
+        padding: 6rem 2rem;
+      }
+    }
+    @media (orientation: landscape) and (max-height: 500px) {
+      .hero {
+        min-height: 80vh;
+        gap: 1rem;
+      }
+      .cool-guy {
+        max-width: 150px;
+        max-height: 150px;
       }
     }
   </style>
 </head>
 <body>
-
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
       <h1>Hey, I am Harshil Darji</h1>
       <p>Node.js & MongoDB Developer</p>
     </div>
-    <img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif" alt="Cool Guy" class="cool-guy" />
+    <img
+      src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif"
+      alt="Cool Guy"
+      class="cool-guy"
+      onerror="this.src='https://via.placeholder.com/150?text=Cool+Guy';"
+    />
   </section>
 
   <!-- About Section -->
@@ -216,21 +255,25 @@
 
       gsap.registerPlugin(ScrollTrigger);
 
+      // Detect mobile devices
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      const animationDuration = isMobile ? 0.8 : 1;
+
       // Hero section animation
       gsap.from(".hero-content", {
         opacity: 0,
         y: 50,
-        duration: 1,
+        duration: animationDuration,
         ease: "power2.out",
       });
 
-      // Cool guy slides in
+      // Cool guy slides in with bounce
       gsap.to(".cool-guy", {
         x: 0,
         opacity: 1,
-        duration: 1.2,
-        delay: 0.8,
-        ease: "power3.out"
+        duration: animationDuration + 0.2,
+        delay: isMobile ? 0.4 : 0.8,
+        ease: "back.out(1.4)",
       });
 
       // About section slide-in
@@ -241,11 +284,11 @@
         },
         opacity: 0,
         x: -100,
-        duration: 1,
+        duration: animationDuration,
         ease: "power2.out",
       });
 
-      // Skills section staggered fade-in
+      // Skills section staggered reveal
       gsap.from(".skill-card", {
         scrollTrigger: {
           trigger: ".skills",
@@ -253,22 +296,35 @@
         },
         opacity: 0,
         y: 100,
-        duration: 1,
+        scale: isMobile ? 0.9 : 1,
+        duration: animationDuration,
         stagger: 0.2,
         ease: "power2.out",
       });
 
-      // MongoDB expertise staggered scale effect
+      // MongoDB expertise staggered reveal
       gsap.from(".expertise-card", {
         scrollTrigger: {
           trigger: ".mongodb",
           start: "top 80%",
         },
         opacity: 0,
-        scale: 0.8,
-        duration: 1,
+        scale: isMobile ? 0.9 : 0.8,
+        duration: animationDuration,
         stagger: 0.2,
         ease: "back.out(1.7)",
+      });
+
+      // Projects section fade-in (if added later)
+      gsap.from(".project-card", {
+        scrollTrigger: {
+          trigger: ".projects",
+          start: "top 80%",
+        },
+        opacity: 0,
+        y: 100,
+        duration: animationDuration,
+        ease: "power2.out",
       });
 
       // Contact section animation
@@ -279,28 +335,42 @@
         },
         opacity: 0,
         y: 50,
-        duration: 1,
+        duration: animationDuration,
         ease: "power2.out",
       });
 
-      // Hover animations for cards
+      // Card animations (hover for desktop, scroll reveal for mobile)
       document.querySelectorAll(".skill-card, .expertise-card").forEach(card => {
-        card.addEventListener("mouseenter", () => {
+        if (!isMobile) {
+          card.addEventListener("mouseenter", () => {
+            gsap.to(card, {
+              scale: 1.05,
+              boxShadow: "0 8px 16px rgba(0, 0, 0, 0.3)",
+              duration: 0.3,
+              ease: "power2.out",
+            });
+          });
+          card.addEventListener("mouseleave", () => {
+            gsap.to(card, {
+              scale: 1,
+              boxShadow: "none",
+              duration: 0.3,
+              ease: "power2.out",
+            });
+          });
+        } else {
           gsap.to(card, {
-            scale: 1.05,
-            boxShadow: "0 8px 16px rgba(0, 0, 0, 0.3)",
-            duration: 0.3,
+            scrollTrigger: {
+              trigger: card,
+              start: "top 90%",
+              toggleActions: "play none none reverse",
+            },
+            scale: 1.03,
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+            duration: 0.4,
             ease: "power2.out",
           });
-        });
-        card.addEventListener("mouseleave", () => {
-          gsap.to(card, {
-            scale: 1,
-            boxShadow: "none",
-            duration: 0.3,
-            ease: "power2.out",
-          });
-        });
+        }
       });
     });
   </script>
