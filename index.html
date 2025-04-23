@@ -17,105 +17,154 @@
       background-color: #1a1a1a;
       color: #fff;
       line-height: 1.6;
+      overflow-x: hidden;
     }
     section {
-      padding: min(5rem, 8vw) min(1rem, 4vw);
+      padding: min(4rem, 6vw) min(1rem, 3vw);
       text-align: center;
+      overflow: auto;
     }
     h1, h2, h3 {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
     h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
     }
     h2 {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
     }
     h3 {
-      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
     }
     p {
-      font-size: clamp(0.9rem, 2vw, 1.2rem);
-      max-width: 800px;
+      font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+      max-width: 700px;
       margin: 0 auto;
     }
-    .hero {
-      min-height: 100vh;
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: #262626;
+      padding: 1rem;
+      z-index: 10;
+    }
+    nav ul {
       display: flex;
+      justify-content: center;
+      gap: min(2rem, 5vw);
+      list-style: none;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #60a5fa;
+    }
+    /* Hero Section */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(to right, #2563eb, #7c3aed);
+      align-content: center;
+      background: linear-gradient(to right, #3b82f6, #a855f7);
       position: relative;
-      overflow: hidden;
-      flex-direction: row;
-      gap: min(2rem, 5vw);
-      padding: 1rem;
+      gap: min(1rem, 3vw);
+      padding: min(2rem, 5vw);
     }
     .hero-content {
-      z-index: 1;
       flex: 1;
+      min-width: 200px;
     }
     .cool-guy {
-      max-width: min(40vw, 300px);
-      max-height: min(40vh, 300px);
+      max-width: min(30vw, 120px);
+      max-height: min(30vh, 120px);
       object-fit: contain;
       transform: translateX(100%);
       opacity: 0;
-      z-index: 1;
       flex: 0 0 auto;
     }
-    .about, .projects, .contact {
+    .about, .skills, .projects, .mongodb, .contact {
       background-color: #262626;
     }
     .skills-container, .expertise-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: min(1.5rem, 4vw);
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 min(1rem, 4vw);
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: min(1rem, 3vw);
+      max-width: 1000px;
+      margin: 1rem auto 0;
+      padding: 0 min(1rem, 3vw);
     }
     .skill-card, .expertise-card, .project-card {
       background-color: #333;
-      padding: min(1.5rem, 5vw);
-      border-radius: 12px;
+      padding: min(1rem, 4vw);
+      border-radius: 10px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       will-change: transform, box-shadow;
+      overflow: hidden;
+      max-width: 350px;
+      margin: 0 auto;
     }
     .skill-card:hover, .expertise-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     }
     .project-card {
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 700px;
     }
     .contact a {
       display: inline-block;
-      padding: min(0.75rem, 2vw) min(1.5rem, 4vw);
-      background-color: #2563eb;
+      padding: min(0.6rem, 1.5vw) min(1.2rem, 3vw);
+      background-color: #3b82f6;
       color: #fff;
       text-decoration: none;
-      border-radius: 8px;
-      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      border-radius: 6px;
+      font-size: clamp(0.85rem, 1.8vw, 1rem);
       transition: background-color 0.3s ease;
       touch-action: manipulation;
     }
     .contact a:hover {
-      background-color: #1d4ed8;
+      background-color: #2563eb;
     }
     /* Responsive Design */
-    @media (max-width: 320px) {
+    @media (max-width: 360px) {
       .hero {
-        gap: 1rem;
-        padding: 0.5rem;
+        min-height: 70vh;
+        padding: 1rem;
+        gap: 0.5rem;
       }
       .cool-guy {
         max-width: 100px;
         max-height: 100px;
       }
+      .skills-container, .expertise-container {
+        grid-template-columns: 1fr;
+      }
     }
     @media (max-width: 600px) {
+      .hero {
+        flex-direction: column;
+        min-height: 70vh;
+        gap: 1rem;
+      }
+      .cool-guy {
+        max-width: 120px;
+        max-height: 120px;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .skills-container, .expertise-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (min-width: 601px) and (max-width: 900px) {
       .hero {
         flex-direction: column;
         gap: 1.5rem;
@@ -124,30 +173,17 @@
         max-width: 150px;
         max-height: 150px;
       }
-      .skills-container, .expertise-container {
-        grid-template-columns: 1fr;
-      }
-      .skill-card, .expertise-card {
-        max-width: 400px;
-        margin: 0 auto;
-      }
-    }
-    @media (max-width: 768px) and (min-width: 601px) {
-      .hero {
-        flex-direction: column;
-        gap: 2rem;
-      }
-      .cool-guy {
-        max-width: 200px;
-        max-height: 200px;
-      }
       .expertise-container {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-    @media (min-width: 1024px) {
+    @media (min-width: 901px) {
       .hero {
         flex-direction: row;
+      }
+      .cool-guy {
+        max-width: 200px;
+        max-height: 200px;
       }
       .skills-container {
         grid-template-columns: repeat(3, 1fr);
@@ -158,38 +194,53 @@
     }
     @media (min-width: 1200px) {
       section {
-        padding: 6rem 2rem;
+        padding: 5rem 2rem;
+      }
+      .cool-guy {
+        max-width: 250px;
+        max-height: 250px;
       }
     }
     @media (orientation: landscape) and (max-height: 500px) {
       .hero {
-        min-height: 80vh;
-        gap: 1rem;
+        min-height: 60vh;
+        gap: 0.8rem;
       }
       .cool-guy {
-        max-width: 150px;
-        max-height: 150px;
+        max-width: 100px;
+        max-height: 100px;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#mongodb">MongoDB Expertise</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
   <!-- Hero Section -->
-  <section class="hero">
+  <section id="hero" class="hero">
     <div class="hero-content">
       <h1>Hey, I am Harshil Darji</h1>
       <p>Node.js & MongoDB Developer</p>
     </div>
-    <img
+    <!-- <img
       src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif"
       alt="Cool Guy"
       class="cool-guy"
-      onerror="this.src='https://via.placeholder.com/150?text=Cool+Guy';"
-    />
+      onerror="this.src='https://via.placeholder.com/120?text=Cool+Guy';"
+    /> -->
   </section>
 
   <!-- About Section -->
-  <section class="about">
+  <section id="about" class="about">
     <h2>About Me</h2>
     <p>
       I'm Harshil Darji, a Node.js developer with over 3 years of experience in building scalable and efficient applications. I specialize in creating servers, designing APIs, and optimizing database performance, particularly with MongoDB. My expertise lies in providing efficient ways to store and handle data, ensuring applications are robust and performant.
@@ -197,7 +248,7 @@
   </section>
 
   <!-- Skills Section -->
-  <section class="skills">
+  <section id="skills" class="skills">
     <h2>Skills</h2>
     <div class="skills-container">
       <div class="skill-card">
@@ -210,13 +261,15 @@
       </div>
       <div class="skill-card">
         <h3>System Design</h3>
-        <p>Creating scalable and performant application architectures with microservices and event driven.</p>
+        <p>Creating scalable and performant application architectures with microservices and event-driven design.</p>
       </div>
     </div>
   </section>
 
+  <!-- Projects Section -->
+
   <!-- MongoDB Expertise Section -->
-  <section class="mongodb">
+  <section id="mongodb" class="mongodb">
     <h2>MongoDB Expertise</h2>
     <p>As a specialized MongoDB database developer, I provide:</p>
     <div class="expertise-container">
@@ -240,7 +293,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section class="contact">
+  <section id="contact" class="contact">
     <h2>Get in Touch</h2>
     <p>Interested in working together? Feel free to reach out!</p>
     <a href="mailto:harshildarji888@gmail.com">Contact Me</a>
@@ -256,23 +309,24 @@
       gsap.registerPlugin(ScrollTrigger);
 
       // Detect mobile devices
-      const isMobile = window.matchMedia("(max-width: 768px)").matches;
-      const animationDuration = isMobile ? 0.8 : 1;
+      const isMobile = window.matchMedia("(max-width: 600px)").matches;
+      const animationDuration = isMobile ? 0.6 : 0.8;
 
       // Hero section animation
       gsap.from(".hero-content", {
         opacity: 0,
-        y: 50,
+        y: 30,
         duration: animationDuration,
         ease: "power2.out",
       });
 
-      // Cool guy slides in with bounce
+      // Cool guy slides in with scale
       gsap.to(".cool-guy", {
         x: 0,
         opacity: 1,
+        scale: 1.1,
         duration: animationDuration + 0.2,
-        delay: isMobile ? 0.4 : 0.8,
+        delay: isMobile ? 0.2 : 0.4,
         ease: "back.out(1.4)",
       });
 
@@ -280,10 +334,10 @@
       gsap.from(".about", {
         scrollTrigger: {
           trigger: ".about",
-          start: "top 80%",
+          start: "top 85%",
         },
         opacity: 0,
-        x: -100,
+        x: -50,
         duration: animationDuration,
         ease: "power2.out",
       });
@@ -292,49 +346,49 @@
       gsap.from(".skill-card", {
         scrollTrigger: {
           trigger: ".skills",
-          start: "top 80%",
+          start: "top 85%",
         },
         opacity: 0,
-        y: 100,
-        scale: isMobile ? 0.9 : 1,
+        y: 50,
+        scale: isMobile ? 0.95 : 1,
         duration: animationDuration,
-        stagger: 0.2,
+        stagger: 0.1,
         ease: "power2.out",
       });
+
+      // Projects section fade-in
+      // gsap.from(".project-card", {
+      //   scrollTrigger: {
+      //     trigger: ".projects",
+      //     start: "top 85%",
+      //   },
+      //   opacity: 0,
+      //   y: 50,
+      //   duration: animationDuration,
+      //   ease: "power2.out",
+      // });
 
       // MongoDB expertise staggered reveal
       gsap.from(".expertise-card", {
         scrollTrigger: {
           trigger: ".mongodb",
-          start: "top 80%",
+          start: "top 85%",
         },
         opacity: 0,
-        scale: isMobile ? 0.9 : 0.8,
+        scale: isMobile ? 0.95 : 0.9,
         duration: animationDuration,
-        stagger: 0.2,
-        ease: "back.out(1.7)",
-      });
-
-      // Projects section fade-in (if added later)
-      gsap.from(".project-card", {
-        scrollTrigger: {
-          trigger: ".projects",
-          start: "top 80%",
-        },
-        opacity: 0,
-        y: 100,
-        duration: animationDuration,
-        ease: "power2.out",
+        stagger: 0.1,
+        ease: "back.out(1.4)",
       });
 
       // Contact section animation
       gsap.from(".contact", {
         scrollTrigger: {
           trigger: ".contact",
-          start: "top 80%",
+          start: "top 85%",
         },
         opacity: 0,
-        y: 50,
+        y: 30,
         duration: animationDuration,
         ease: "power2.out",
       });
@@ -344,9 +398,9 @@
         if (!isMobile) {
           card.addEventListener("mouseenter", () => {
             gsap.to(card, {
-              scale: 1.05,
-              boxShadow: "0 8px 16px rgba(0, 0, 0, 0.3)",
-              duration: 0.3,
+              scale: 1.03,
+              boxShadow: "0 6px 12px rgba(0, 0, 0, 0.3)",
+              duration: 0.2,
               ease: "power2.out",
             });
           });
@@ -354,7 +408,7 @@
             gsap.to(card, {
               scale: 1,
               boxShadow: "none",
-              duration: 0.3,
+              duration: 0.2,
               ease: "power2.out",
             });
           });
@@ -365,9 +419,9 @@
               start: "top 90%",
               toggleActions: "play none none reverse",
             },
-            scale: 1.03,
+            scale: 1.02,
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-            duration: 0.4,
+            duration: 0.3,
             ease: "power2.out",
           });
         }
